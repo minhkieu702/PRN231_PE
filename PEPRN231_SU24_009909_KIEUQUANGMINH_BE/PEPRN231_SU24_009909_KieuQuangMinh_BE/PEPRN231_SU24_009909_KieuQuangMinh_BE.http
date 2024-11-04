@@ -1,0 +1,6 @@
+@PEPRN231_SU24_009909_KieuQuangMinh_BE_HostAddress = http://localhost:5030
+
+GET {{PEPRN231_SU24_009909_KieuQuangMinh_BE_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

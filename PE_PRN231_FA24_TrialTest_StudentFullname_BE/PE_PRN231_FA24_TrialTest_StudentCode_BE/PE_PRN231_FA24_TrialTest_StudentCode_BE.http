@@ -1,6 +1,0 @@
-@PE_PRN231_FA24_TrialTest_StudentCode_BE_HostAddress = http://localhost:5258
-
-GET {{PE_PRN231_FA24_TrialTest_StudentCode_BE_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

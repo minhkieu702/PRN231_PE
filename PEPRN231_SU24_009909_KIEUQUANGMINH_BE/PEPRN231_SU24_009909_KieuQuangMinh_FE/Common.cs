@@ -39,10 +39,18 @@ namespace PEPRN231_SU24_009909_KieuQuangMinh_FE
             return await httpClient.SendAsync(request);
         }
 
-        public async static Task<T?> ReadT<T>(HttpResponseMessage reponse)
+        public async static Task<T?> ReadT<T>(HttpResponseMessage reponse, bool isOdata = false)
         {
             var content = await reponse.Content.ReadAsStringAsync();
             var jsonDocument = JsonDocument.Parse(content);
+            if (!isOdata)
+            {
+                return JsonSerializer.Deserialize<T>(jsonDocument, new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                });
+            }
+
             var valueElement = jsonDocument.RootElement.GetProperty("value");
             return JsonSerializer.Deserialize<T>(valueElement, new JsonSerializerOptions
             {

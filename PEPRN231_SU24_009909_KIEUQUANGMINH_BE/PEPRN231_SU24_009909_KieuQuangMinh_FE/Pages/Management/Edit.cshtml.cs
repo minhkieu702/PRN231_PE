@@ -19,7 +19,7 @@ namespace PEPRN231_SU24_009909_KieuQuangMinh_FE.Pages.Management
 
         private async Task GetClubs(string token)
         {
-            var response = await Common.SendRequestAsync($"{Common.BaseURL}/odata/footballClub", HttpMethod.Get, null, token);
+            var response = await Common.SendRequestAsync($"{Common.BaseURL}/api/FootballClubs", HttpMethod.Get, null, token);
             if (!response.IsSuccessStatusCode)
             {
                 TempData["error"] = await Common.ReadError(response);
@@ -44,7 +44,7 @@ namespace PEPRN231_SU24_009909_KieuQuangMinh_FE.Pages.Management
                 TempData["errror"] = await Common.ReadError(response);
                 return Page();
             }
-            var footballPlayerList = await Common.ReadT<List<FootballPlayer>>(response);
+            var footballPlayerList = await Common.ReadT<List<FootballPlayer>>(response, true);
             FootballPlayer = footballPlayerList.FirstOrDefault();
             return Page();
         }
@@ -65,7 +65,7 @@ namespace PEPRN231_SU24_009909_KieuQuangMinh_FE.Pages.Management
                 return Page();
             }
             
-            var response = await Common.SendRequestAsync($"{Common.BaseURL}/player/{FootballPlayer.FootballPlayerId}", HttpMethod.Put, FootballPlayer, token);
+            var response = await Common.SendRequestAsync($"{Common.BaseURL}/api/{FootballPlayer.FootballPlayerId}", HttpMethod.Put, FootballPlayer, token);
             if (!response.IsSuccessStatusCode)
             {
                 TempData["errror"] = await Common.ReadError(response);

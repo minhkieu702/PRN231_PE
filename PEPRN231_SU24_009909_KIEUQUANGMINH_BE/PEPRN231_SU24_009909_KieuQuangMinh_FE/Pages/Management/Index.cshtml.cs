@@ -33,7 +33,7 @@ namespace PEPRN231_SU24_009909_KieuQuangMinh_FE.Pages.Management
                 {
                     TempData["error"] = "Something was wrong.";
                 }
-                FootballPlayer = await Common.ReadT<IList<FootballPlayer>>(response);
+                FootballPlayer = await Common.ReadT<IList<FootballPlayer>>(response, true);
                 return Page();
             }
             catch (Exception ex)
@@ -69,7 +69,7 @@ namespace PEPRN231_SU24_009909_KieuQuangMinh_FE.Pages.Management
                     TempData["error"] = "Something was wrong.";
                     return Page();
                 }
-                FootballPlayer = await Common.ReadT<IList<FootballPlayer>>(response);
+                FootballPlayer = await Common.ReadT<IList<FootballPlayer>>(response, true);
                 return Page();
             }
             catch (Exception ex)

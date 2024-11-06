@@ -28,7 +28,7 @@ namespace PEPRN231_SU24_009909_KieuQuangMinh_FE.Pages
                 return Page();
             }
 
-            var response = await Common.SendRequestAsync($"{Common.BaseURL}/odata/Auth", HttpMethod.Post, new {password = Password, emailAddress = EmailAddress});
+            var response = await Common.SendRequestAsync($"{Common.BaseURL}/api/login", HttpMethod.Post, new {password = Password, emailAddress = EmailAddress});
 
             if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
             {

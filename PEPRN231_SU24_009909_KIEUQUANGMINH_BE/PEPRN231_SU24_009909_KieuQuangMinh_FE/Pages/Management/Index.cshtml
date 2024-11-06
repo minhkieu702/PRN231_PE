@@ -48,32 +48,37 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.FootballPlayer) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Achievements)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Birthday)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlayerExperiences)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nomination)
-            </td>
-            <td>
-                    @Html.DisplayFor(modelItem => item.FootballClub.ClubName)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.FootballPlayerId">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.FootballPlayerId">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.FootballPlayerId">Delete</a>
-            </td>
-        </tr>
-}
+@if (Model.FootballPlayer != null && Model.FootballPlayer.Count > 0)
+        {
+            @foreach (var item in Model.FootballPlayer)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Achievements)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Birthday)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlayerExperiences)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nomination)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FootballClub.ClubName)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.FootballPlayerId">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.FootballPlayerId">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.FootballPlayerId">Delete</a>
+                    </td>
+                </tr>
+            }
+
+        }
     </tbody>
 </table>
